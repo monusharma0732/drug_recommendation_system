@@ -6,12 +6,9 @@ A content-based drug recommendation system using TF-IDF and cosine similarity. B
 
 ```
 drug_recommendation_system/
-├── app/
-│   └── app.py               ← Streamlit frontend
-├── data/
-│   └── drugs.csv            ← Sample drug dataset
-├── models/
-│   └── tfidf_cosine.pkl     ← Vectorizer and similarity matrix
+├── app.py               ← Streamlit frontend
+├── drugs.csv            ← Sample drug dataset
+├── tfidf_cosine.pkl     ← Vectorizer and similarity matrix
 ├── requirements.txt         ← Python dependencies
 ├── README.md                ← GitHub instructions
 ```
