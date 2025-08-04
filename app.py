@@ -1,16 +1,19 @@
-
 import streamlit as st
-import pickle
 import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
-# Load model data
-with open("../models/tfidf_cosine.pkl", "rb") as f:
-    data = pickle.load(f)
+# Load dataset
+df = pd.read_csv("drugs.csv")
 
-df = data["df"]
-cosine_sim = data["cosine_sim"]
+# Compute TF-IDF matrix
+tfidf = TfidfVectorizer(stop_words='english')
+tfidf_matrix = tfidf.fit_transform(df['Description'])
 
-# Get index from drug name
+# Compute cosine similarity matrix
+cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
+
+# Function to get recommendations
 def get_recommendations(drug_name, top_n=3):
     if drug_name not in df['Drug_Name'].values:
         return []
